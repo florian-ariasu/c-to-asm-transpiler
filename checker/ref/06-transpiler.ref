@@ -1,5 +1,0 @@
-SUB eax, eax
-SUB edx, ebx
-SUB ecx, ebx
-SUB eax, 55
-SUB ebx, 16
