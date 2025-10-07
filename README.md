@@ -1,63 +1,59 @@
-# Simple C-to-Assembly Compiler
+# Simple C-to-Assembly Transpiler
 
-## Classes / Components
-For this project, I implemented the following core components:
+## Project Overview
 
-- **Lexer** – tokenizes the input C-like source code.  
-- **Parser** – builds a simple abstract syntax tree (AST) based on the grammar.  
-- **Translator** – converts AST nodes into NASM-style 32-bit assembly instructions.  
-- **SymbolTable** – keeps track of declared variables and their register mapping.  
-- **Emitter** – formats and outputs the final assembly code.  
-- **Main** – entry point for running the transpilation process.  
+This project is a simple C-to-NASM 32-bit assembly transpiler. It reads a restricted subset of C-like code and converts it into NASM-style assembly instructions. The focus is on clarity and understanding of instruction semantics rather than performance or full C language support.
+
+---
+
+## Core Components
+
+* **Translator** – Parses each line of input and converts assignments, arithmetic operations, and logic operations into NASM assembly instructions.
+* **Control Flow Handlers** – Translates `if`, `for`, and `while` statements into labeled assembly blocks with conditional jumps.
+* **Register Mapper** – Maps variables `a`, `b`, `c`, `d` to fixed registers (`eax`, `ebx`, `ecx`, `edx`).
+* **Main Loop** – Reads input lines, detects control structures, and invokes the translator for each statement.
 
 ---
 
 ## Feature Description
 
-###### Data Structures
-- Used **maps** and **vectors** (or equivalent structures) to maintain symbol mappings, register usage, and output instruction lists.  
-- SymbolTable ensures variable-to-register consistency using the predefined mapping convention:  
-  - `A → eax`  
-  - `B → ebx`  
-  - `C → ecx`  
-  - `D → edx`  
+###### Supported Operations
 
-###### Components
-- The **Lexer** splits the input source code into tokens like identifiers, literals, and operators.  
-- The **Parser** uses a lightweight grammar to recognize expressions, assignments, and control structures (`if`, `for`, `while`).  
-- The **Translator** applies transformation rules from C statements to equivalent ASM instructions based on the assignment guide.  
-- The **Emitter** outputs a `.asm` file, keeping consistent indentation, labels, and comments for clarity.  
-- The **Main** file acts as the controller that glues everything together — reading input, invoking translation, and writing output.  
+* Arithmetic: **ADD**, **SUB**, **MUL**, **DIV**
+* Logic: **AND**, **OR**, **XOR**
+* Shifts: **SHL**, **SHR**
+* Comparisons: **CMP** with conditional jumps (**JE**, **JNE**, **JG**, **JL**, **JGE**, **JLE**)
 
-###### Instruction Coverage
-The compiler currently supports:
-- **MOV**, **ADD**, **SUB**, **MUL**, **DIV**  
-- **AND**, **OR**, **XOR**  
-- **SHL**, **SHR**  
-- **CMP** and conditional jumps (**JE**, **JNE**, **JG**, **JL**, etc.)  
-- Basic **if/else**, **for**, and **while** constructs.
+###### Control Flow
+
+* **if** statements
+* **for** loops (with initialization, condition, increment)
+* **while** loops
+* Uses labels (`start_loop`, `end_loop`) to emulate loop control.
+
+###### Register Mapping
+
+* `a → eax`
+* `b → ebx`
+* `c → ecx`
+* `d → edx`
+
+###### Error Handling
+
+* Division by zero is detected and prints an error message.
 
 ---
 
 ## Implementation Notes
 
-###### Design
-- The implementation focuses on **simplicity** and **clarity** rather than performance or optimization.  
-- I intentionally avoided complex register allocation algorithms — register mappings are fixed to help understand instruction semantics.  
-- Control flow constructs (loops, conditionals) are translated into labels and jumps following the table examples provided in the assignment.  
-- Division instructions are preceded by `MOV EDX, 0` to prevent undefined behavior.  
-
-###### OOP / Structural Principles
-- **Encapsulation** – internal state of components (lexer, parser, etc.) is hidden.  
-- **Modularity** – each file has a single responsibility (lexing, parsing, translating, emitting).  
-- **Abstraction** – translation logic is layered, mirroring compiler design stages.  
-
-###### Comments & Code Style
-- The code avoids unnecessary comments, relying on clear method and variable names instead.  
-- Function and variable names are kept descriptive and consistent in English for readability.  
+* **Simplicity and Clarity** – Fixed register mapping and line-by-line translation for readability.
+* **Parsing Approach** – Basic character-based parsing without a full lexer or AST.
+* **Code Style** – Descriptive variable names, consistent indentation, minimal comments.
+* **Label Management** – Each control structure creates start and end labels to handle branching.
 
 ---
 
-## Licence
-This project is licensed under the **MIT Licence**.  
-See the [LICENCE](./LICENSE) file for details.
+## License
+
+This project is licensed under the **MIT License**.
+See the [LICENSE](./LICENSE) file for details.
