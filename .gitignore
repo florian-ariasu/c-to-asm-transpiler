@@ -1,6 +1,0 @@
-# Build artifacts
-transpiler
-*.o
-
-# Backup files
-*.backup
