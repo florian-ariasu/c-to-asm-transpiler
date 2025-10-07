@@ -55,7 +55,7 @@ The compiler currently supports:
 ###### Comments & Code Style
 - The code avoids unnecessary comments, relying on clear method and variable names instead.  
 - Function and variable names are kept descriptive and consistent in English for readability.  
-- The `make` system automates compilation and packaging (`make pack` rule).  
+- The `make` system automates compilation.  
 
 ---
 
@@ -70,30 +70,6 @@ Use the provided `Makefile` to compile the project:
 make
 ```
 
-### Packaging
-To prepare your submission archive:
-```bash
-make pack
-```
-
-This automatically zips all necessary files for submission (don’t forget to edit your name in the Makefile first!).
-
-### Checker
-You can verify your solution using the **hw_checker** tool.  
-Install it via:
-```bash
-curl https://sh.rustup.rs -sSf | sh -s -- -y
-source "$HOME/.cargo/env"
-cargo install hw_checker
-```
-
-Then run:
-```bash
-hw_checker
-```
-
-To enable **Valgrind** checking, press `v` (you’ll see a red border indicating it’s active).
-
 ---
 
 ## Bonus: Vibe-Coding Mode 💽
@@ -105,8 +81,6 @@ The goal was not only to make a working transpiler but also to feel the *aesthet
 ## Tips for Running the Project  
 
 > [!TIP]  
-> You don’t need to manually install extra dependencies — everything is handled via the `Makefile` and checker.  
->  
 > To experiment interactively, you can pipe your own C-like input files directly into the transpiler:  
 > ```bash
 > ./transpiler < input.c > output.asm
