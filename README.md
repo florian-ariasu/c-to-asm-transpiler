@@ -55,36 +55,6 @@ The compiler currently supports:
 ###### Comments & Code Style
 - The code avoids unnecessary comments, relying on clear method and variable names instead.  
 - Function and variable names are kept descriptive and consistent in English for readability.  
-- The `make` system automates compilation.  
-
----
-
-## Running the Project
-
-> [!NOTE]  
-> The transpiler executable must be named **`transpiler`** and located in the root directory.  
-
-### Building
-Use the provided `Makefile` to compile the project:
-```bash
-make
-```
-
----
-
-## Bonus: Vibe-Coding Mode 💽
-This project was developed entirely in **vibe-coding mode** — a late-night coding flow powered by caffeine, lo-fi beats, and pure compiler energy.  
-The goal was not only to make a working transpiler but also to feel the *aesthetic* of low-level computing: transforming abstract logic into raw assembly instructions — art from syntax.
-
----
-
-## Tips for Running the Project  
-
-> [!TIP]  
-> To experiment interactively, you can pipe your own C-like input files directly into the transpiler:  
-> ```bash
-> ./transpiler < input.c > output.asm
-> ```  
 
 ---
 
