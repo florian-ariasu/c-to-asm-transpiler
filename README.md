@@ -53,6 +53,12 @@ This project is a simple C-to-NASM 32-bit assembly transpiler. It reads a restri
 
 ---
 
+## Development Approach
+
+This project was developed as an experimental learning exercise to explore compiler design concepts and low-level programming techniques.
+
+---
+
 ## License
 
 This project is licensed under the **MIT License**.
