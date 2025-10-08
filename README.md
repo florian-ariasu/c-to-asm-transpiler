@@ -55,7 +55,7 @@ This project is a simple C-to-NASM 32-bit assembly transpiler. It reads a restri
 
 ## Development Approach
 
-This project was developed as an experimental learning exercise using a vibecoding approach, exploring compiler design concepts while leveraging chatbots and AI agents to assist in the coding and design process.
+This project was fully developed as an experimental learning exercise using a vibecoding approach, exploring compiler design concepts while leveraging chatbots and AI agents to assist in the coding and design process.
 
 ---
 
